@@ -8,7 +8,6 @@ class Command(BaseCommand):
     help = 'Load bank data from CSV file'
 
     def handle(self, *args, **kwargs):
-        # API URL
         url = "https://stat.fsc.gov.tw/FSC_OAS3_RESTORE/api/CSV_EXPORT?TableID=B14&OUTPUT_FILE=Y"
 
         # 下載 CSV 文件
@@ -21,10 +20,6 @@ class Command(BaseCommand):
         # 讀取 CSV 內容
         csvfile = StringIO(response.text)
         reader = csv.DictReader(csvfile)
-
-        # 打印 CSV 標題行
-        headers = reader.fieldnames
-        print("CSV Headers:", headers)
 
         for row in reader:
             # 只處理包含"銀行"、"信用合作社"的資料(其他非屬金管會定義之銀行)
