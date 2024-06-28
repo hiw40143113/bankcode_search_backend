@@ -7,10 +7,11 @@ class BankSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bank
-        fields = ['id', 'name', 'code']
+        fields = ['id', 'name', 'code', 'display_name']
 
     def get_display_name(self, obj):
         return f"{obj.code} {obj.name}"
+
 
 class BranchSerializer(serializers.ModelSerializer):
     class Meta:
