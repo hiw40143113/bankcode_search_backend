@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3$t+gdb902=es2-6jy^5#=g5%k#@ytl_)w@66dor1(j%gg53hc'
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,6 +47,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
+    env("CORS_WHITELIST"),
     'http://localhost:3000',  # React前端運行的地址
 ]
 
@@ -76,7 +77,7 @@ WSGI_APPLICATION = 'bankcode.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": env("DB_ENGINE"),
         "OPTIONS": {
             "passfile": ".my_pgpass",
         },
