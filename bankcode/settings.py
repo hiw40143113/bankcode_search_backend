@@ -19,7 +19,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["bankcode-search-7a93fdebedf9.herokuapp.com/"]
+ALLOWED_HOSTS = ["bankcode-search-7a93fdebedf9.herokuapp.com"]
 
 
 # Application definition
