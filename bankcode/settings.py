@@ -19,7 +19,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["bankcode-search-7a93fdebedf9.herokuapp.com"]
+ALLOWED_HOSTS = ["bankcode-search-7a93fdebedf9.herokuapp.com","localhost"]
 
 
 # Application definition
@@ -50,7 +50,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = [
     env("CORS_WHITELIST"),
-    'http://localhost:3000',  # React前端運行的地址
+    "http://localhost:3000",  # React前端運行的地址
 ]
 
 ROOT_URLCONF = 'bankcode.urls'
