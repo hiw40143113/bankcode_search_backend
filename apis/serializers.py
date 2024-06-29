@@ -14,6 +14,9 @@ class BankSerializer(serializers.ModelSerializer):
 
 
 class BranchSerializer(serializers.ModelSerializer):
+    bank_code = serializers.CharField(source='bank.code', read_only=True)
+    bank_name = serializers.CharField(source='bank.name', read_only=True)
+
     class Meta:
         model = Branch
-        fields = ['id', 'bank', 'name', 'code', 'address', 'phone']
+        fields = ['id', 'bank', 'name', 'code', 'address', 'phone', 'bank_code', 'bank_name']
