@@ -8,9 +8,14 @@ class Command(BaseCommand):
     help = 'Load bank data from CSV file'
 
     def handle(self, *args, **kwargs):
-        with open('static/data/bankcode.csv', newline='', encoding='utf-8-sig') as csvfile:
+        url = 'https://stat.fsc.gov.tw/FSC_OAS3_RESTORE/api/CSV_EXPORT?TableID=B14&OUTPUT_FILE=Y'
+        response = requests.get(url)
+        response.encoding = 'utf-8-sig'
+        
+        if response.status_code == 200:
+            csvfile = StringIO(response.text)
             reader = csv.DictReader(csvfile)
-
+            
             for row in reader:
                 # 只處理包含"銀行"、"信用合作社"的資料(其他非屬金管會定義之銀行)
                 if not any(keyword in row.get('機構名稱', '') for keyword in ['銀行', '信用合作社']):
@@ -58,4 +63,6 @@ class Command(BaseCommand):
                         }
                     )
 
-            self.stdout.write(self.style.SUCCESS('Successfully loaded and updated bank data from csvfile'))
+            self.stdout.write(self.style.SUCCESS('Successfully loaded and updated bank data from API'))
+        else:
+            self.stdout.write(self.style.ERROR('Failed to fetch data from API'))
