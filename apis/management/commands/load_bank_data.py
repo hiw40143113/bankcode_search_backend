@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 from apis.models import Bank, Branch
 
 class Command(BaseCommand):
-    help = 'Load bank data from CSV file'
+    help = 'Load bank data from api'
 
     def handle(self, *args, **kwargs):
         url = 'https://stat.fsc.gov.tw/FSC_OAS3_RESTORE/api/CSV_EXPORT?TableID=B14&OUTPUT_FILE=Y'

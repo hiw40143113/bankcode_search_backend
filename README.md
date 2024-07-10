@@ -43,6 +43,8 @@
 
    在專案 /.bankcode 創建一個 `.env` 文件，並依照 `.env.example` 添加對應的本機端內容
 
+3. 運行 python manage.py migrate 建立資料庫欄位
+
 ## 使用範例
 
 你可以使用 `python manage.py load_bank_data` 指令將資料匯進資料庫，搭配前端 React 專案可在瀏覽器中訪問 `http://127.0.0.1:3000/` 來查看應用並進行操作。
